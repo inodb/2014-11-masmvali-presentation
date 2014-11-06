@@ -452,7 +452,7 @@
                                 src="img/bilslogo-small.jpg"
                                 style="border-style: none" alt="BILS" /></a>-->
                         <br />
-                        <small>Presentation at <a href="http://bit.ly/mgseminar">bit.ly/mgseminar</a></small>
+                        <small>Presentation at <a href="http://ino.pm/2014hack">ino.pm/2014hack</a></small>
 					</p>
 				</section>
                 <section data-markdown>
@@ -461,12 +461,6 @@
 
                     - Research
                         - *de novo* Metagenomic Assembly benchmark
-                        - Clustering Contigs
-                    - Support
-                        - Assembly for various groups
-                        - Development Lab Information Management System
-                    - Outreach
-                        - Workshops
                     </script>
 				</section>
                 <section data-markdown>
@@ -654,139 +648,49 @@
 				</section>
                 <section data-markdown>
                     <script type="text/template">
-                    ### clustering contigs into bins of one genome
-                    #### [CONCOCT](http://www.github.com/BinPro/CONCOCT): Clustering cONtigs with COverage and ComposiTion
+                    ## Conclusions
+                    - Purest but shortest contigs
+                    ```bash
+                    velvetnoscaf
+                    ```
+                    - Slightly less pure, slightly longer
+                    ```bash
+                    raynoscaf
+                    ```
+                    - Longest contigs at a small price of purity
+                    ```bash
+                    {velvet,ray}noscafnewbler
+                    ```
+                    - Scaffolding and Meta-Velvet don't work well on this data
+                    - Rule of thumb high coverage indicates high purity
                     </script>
 				</section>
                 <section data-markdown>
                     <script type="text/template">
-                    ## CONCOCT
-                    - automated unsupervised binning
-                    - Information used
-                        - Composition of contig
-                        - Coverage of contig in multiple samples
-                    - Algorithm
-                        - Combined vector composition and coverage
-                        - PCA to reduce dimensions *D* to 90% of information
-                        - Each cluster represented as *D* dimensional Gaussian distribution
-                        - Gaussian Mixture Model of *K* clusters
-                        - Cluster number *K* determined with automatic relevance determination
-                            - Only keep clusters necessary to explain the data
-                    - Credits to [Christopher Quince](http://userweb.eng.gla.ac.uk/christopher.quince/Index.html)
-                    </script>
-				</section>
-                <section data-markdown>
-                    <script type="text/template">
-                    ## CONCOCT BENCHMARK
-                    - mock 96 samples of 101 species
-                    - mock 64 samples of 20 genomes with 5 strains of E Coli
-                    - Sharon 2013 11 fecal samples first month preterm infant
-                    - Siga toxin-producing E Coli (STEC) 2011 outbreak 53 fecal samples
+                    ## Analyze kmer origin with Kraken
+                    - Find where whether kmer is erroneous or chimeric
                     </script>
 				</section>
                 <section>
-                    <h2>101 Species mock 96 samples</h2>
-                    <a href="img/SupFigure5.png"><img src="img/SupFigure5.png" alt="clusters" /></a>
+                    <h2>Impure contigs</h2>
+                    <img src="img/ven_kraken_white.png" height=400 alt="kraken venn" /><br />
+                    <ul>
+                        <li>Number of kmers chimeric: 219020</li>
+                        <li>Number of kmers erroneous: 89314</li>
+                    </ul>
                 </section>
-                <section data-markdown>
-                    <script type="text/template">
-                    ## CONCOCT BENCHMARK
-                    - Works almost perfect on species mock
-                        - 101 clusters predicted
-                        - almost completely pure clusters
-                    - Less good on strain level
-                        - only two clusters for five strains
-                        - probably insufficient strain contigs
-                    - Sharon 2013 11 fecal samples first month preterm infant
-                        - same as manually inspecting ESOM in paper
-                    - Siga toxin-producing E Coli (STEC) 2011 outbreak 53 fecal samples
-                        - 297 clusters
-                        - 2 clusters representing outbreak genome
-                    </script>
-				</section>
-                <section data-markdown>
-                    <script type="text/template">
-                    ## USE CONCOCT
-                    ### Find it on [github](http://www.github.com/BinPro/CONCOCT)
-                    </script>
-				</section>
-                <section data-markdown>
-                    <script type="text/template">
-                        ## Support
-                    </script>
-				</section>
-                <section data-markdown>
-                    <script type="text/template">
-                        ## Metagenomic Assembly/Clustering Support
-
-                        - Microbial Metagenomics in the Baltic Sea (MIMEBS)
-                            - Stockholm University
-                            - J. Craig Venter Institute
-                        - Crohn's in Childhood Research Association (CICRA)
-                            - University of Birmingham
-                            - University of Glasgow
-                        - Hydrothermal Vents near Hawaii
-                            - Uppsala University
-                        - Moose Microbiomes
-                            - KTH Royal Institute of Technology, Sweden
-                    </script>
-				</section>
-                <section data-markdown>
-                    <script type="text/template">
-                        ## Metagenomic Assembly/Clustering Support
-                        - Viral metagenomic sample from nuclear waste
-                            - Äspö Hard Rock Laboratory
-                            - Linnaeus University, Kalmar
-                        - Nuclear waste metagenomic samples
-                            - École Polytechnique Federale De Lausanne
-                        - Lakes in Finland
-                            - Uppsala University
-                    </script>
-				</section>
-                <section data-markdown>
-                    <script type="text/template">
-                        ## System Development
-                    </script>
-				</section>
-                <section data-markdown>
-                    <script type="text/template">
-                        ## Lab Information Management System (LIMS)
-                        - Created for [Ettema Lab](http://www.ettemalab.org/)
-                            - Single Cell/Metagenomics Lab in Uppsala
-                        - Full stack developer
-                        - Programmed in Python
-                            - Django web framework
-                            - PostgreSQL backend
-                        - The LIMS is hosted on [github](https://github.com/bils/scglims)
-                        - Demo version on [heroku](http://bit.ly/ettlims-heroku)
-                            - admin user/pass inodb/inodb
-                    </script>
-				</section>
-                <section data-markdown>
-                    <script type="text/template">
-                        ## Outreach
-                    </script>
-				</section>
-                <section data-markdown>
-                    <script type="text/template">
-                        ## Metagenomics Workshops
-
-                        - [Stockholm, Sweden 2014](http://bit.ly/metalove)
-                        - [Uppsala, Sweden 2013](http://nestor.uppnex.se/twiki/bin/view/Courses/SWS1311/Schedule)
-                        - [Göteborg, Sweden 2013](http://ino.pm/2013-mg-workshop-gbg/)
-                    </script>
-				</section>
-                <section data-markdown>
-                    <script type="text/template">
-                        ## Tech Workshops
-
-                        - [LIMS Developers Workshop](http://ino.pm/outreach/presentations/2014/06/lims-developers-workshop/)
-                        - [Genomic Wranglers - Bash/GNU Parallel](http://bit.ly/gwbash)
-                    </script>
-				</section>
+                <section>
+                    <h2>Current State masmvaliweb</h2>
+                    <img src="img/masmvali_django.png" alt="masmvali django" />
+                </section>
+                <section>
+                    <h2>Current State masmvaliweb</h2>
+                    <a href="video/masmvali_demo.ogv"><img src="img/upload_asm.png"
+                        alt="masmvali flask" /></a>
+                </section>
                 <section>
                     <h2>Stop</h2>
-                    <img src="img/morning.jpg" alt="Ask questions" /><br />
+                    <img src="img/questions.jpg" alt="Ask questions" /><br />
                     <h2>Time</h2>
                     <!--Presentation at<br /><a
                         href="http://bit.ly/inotalks">bit.ly/inotalks</a>-->
