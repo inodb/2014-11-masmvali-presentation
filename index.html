@@ -443,8 +443,8 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>Metagenomics</h1>
-                    <h3>Dissecting microbial communties in silico</h3>
+					<h1>Metagenomic Assembly Evaluation</h1>
+                    <h3>Decreasing the assembler space</h3>
 					<p>
 						<small><a href="http://ino.pm">Ino de Bruijn</a> / <a
                                 href="http://twitter.com/inodb">@inodb</a></small>
@@ -459,8 +459,10 @@
                     <script type="text/template">
                     ## Content
 
-                    - Research
-                        - *de novo* Metagenomic Assembly benchmark
+                    - de Bruijn graph (optional)
+                    - *de novo* Metagenomic Assembly benchmark
+                        - macro stats for comparing assemblers
+                        - micro stats for determining errors in single assembly
                     </script>
 				</section>
                 <section data-markdown>
@@ -668,9 +670,16 @@
                 <section data-markdown>
                     <script type="text/template">
                     ## Analyze kmer origin with Kraken
-                    - Find where whether kmer is erroneous or chimeric
+                    - Check for each kmer in a contig whether it is erroneous or chimeric
+                    - If chimeric
+                        - what rank in the taxonomic tree is the kmer coming from
                     </script>
 				</section>
+                <section>
+                    <h2>Kmer origin</h2>
+                    <img src="img/pure_contigs_kmer_counts_white.png" alt="kraken venn" />
+                    <img src="img/impure_contigs_kmer_count_white.png" alt="kraken venn" /><br />
+                </section>
                 <section>
                     <h2>Impure contigs</h2>
                     <img src="img/ven_kraken_white.png" height=400 alt="kraken venn" /><br />
@@ -678,6 +687,19 @@
                         <li>Number of kmers chimeric: 219020</li>
                         <li>Number of kmers erroneous: 89314</li>
                     </ul>
+                </section>
+                <section>
+                    <img src="img/classified_contigs_by_kmer_white.png" height=450 alt="kraken venn" /><br />
+                    <small>
+                    <ul>
+                        <li>unclassifed: not in any of categories below</li>
+                        <li>a_tip_error: has erroneous kmers at the tip, but also other erroneous kmers</li>
+                        <li>one_tip_error: has one tip with erroneous_kmers and no other erroneous kmers</li>
+                        <li>two_tip_error: has two tips with erroneous_kmers and no other erroneous kmers</li>
+                        <li>one_break: has one point not located at the tips with only erroneous kmers</li>
+                        <li>100% qrycov: the query contig is completely aligned to the reference</li>
+                    </ul>
+                    </small>
                 </section>
                 <section>
                     <h2>Current State masmvaliweb</h2>
